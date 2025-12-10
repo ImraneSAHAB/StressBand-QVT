@@ -35,7 +35,7 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
               <Link href="/" className="flex items-center gap-3">
                 <Image
-                  src="/logo-qvt.svg"
+                     src="/logo-SB.png"
                   alt="Logo StressBand QVT"
                   width={32}
                   height={32}

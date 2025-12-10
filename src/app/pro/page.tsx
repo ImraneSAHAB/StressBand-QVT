@@ -241,9 +241,19 @@ export default function ProPage() {
                       ID brassard : {activeId}
                     </p>
                   </div>
-                  <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
-                    Fiche synthétique QVT
-                  </span>
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                      Fiche synthétique QVT
+                    </span>
+                    {activeId && (
+                      <a
+                        href={`/api/report/${activeId}`}
+                        className="inline-flex items-center justify-center rounded-full border border-emerald-400 px-3 py-1 text-[11px] font-medium text-emerald-100 shadow-sm transition hover:bg-emerald-500/10"
+                      >
+                        Télécharger le PDF
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-3">

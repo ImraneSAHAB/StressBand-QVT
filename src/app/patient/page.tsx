@@ -48,9 +48,7 @@ export default function PatientPage() {
             Fréquence cardiaque moyenne
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${
-              isBpmHigh ? "text-red-400" : "text-slate-50"
-            }`}
+            className={`mt-3 text-3xl font-semibold ${isBpmHigh ? "text-red-400" : "text-slate-50"}`}
           >
             {HEART_RATE} bpm
           </p>
@@ -64,9 +62,7 @@ export default function PatientPage() {
             Fréquence respiratoire
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${
-              isRespHigh ? "text-red-400" : "text-slate-50"
-            }`}
+            className={`mt-3 text-3xl font-semibold ${isRespHigh ? "text-red-400" : "text-slate-50"}`}
           >
             {RESPIRATION} / min
           </p>
@@ -80,9 +76,7 @@ export default function PatientPage() {
             Qualité du sommeil (score)
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${
-              isSleepLow ? "text-red-400" : "text-slate-50"
-            }`}
+            className={`mt-3 text-3xl font-semibold ${isSleepLow ? "text-red-400" : "text-slate-50"}`}
           >
             {SLEEP_SCORE} / 100
           </p>
