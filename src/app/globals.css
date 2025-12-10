@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cardio-grid {
+  position: relative;
+  background-image: linear-gradient(
+      to right,
+      rgba(148, 163, 184, 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(148, 163, 184, 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 16px 16px;
+}
+
+.cardio-line {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.cardio-track {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cardio-sweep var(--cardioSpeed, 2.8s) linear infinite;
+}
+
+.bar-pulse {
+  transform-origin: bottom center;
+  animation: bar-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes bar-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.6);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cardio-sweep {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-260px);
+  }
+}
