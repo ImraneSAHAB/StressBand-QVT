@@ -1,4 +1,13 @@
+"use client";
+
+import Link from "next/link";
+import { getCurrentUser } from "../lib/auth";
+
 export default function Home() {
+  const user = getCurrentUser();
+  const target = user ? (user.role === "patient" ? "/patient" : "/pro") : "/login";
+  const label = user ? "Accéder à mon espace" : "Connexion";
+
   return (
     <div className="space-y-10">
       <section className="space-y-4">
@@ -11,6 +20,12 @@ export default function Home() {
           travail (BPM, respiration, rythme du sommeil) recueillies par un
           brassard connecté.
         </p>
+        <Link
+          href={target}
+          className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2 text-sm font-medium text-emerald-950 shadow-sm transition hover:bg-emerald-400"
+        >
+          {label}
+        </Link>
       </section>
 
       <section className="grid gap-6 md:grid-cols-2">

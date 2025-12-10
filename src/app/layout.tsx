@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { HeaderAuthButton } from "../components/HeaderAuthButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,12 +50,7 @@ export default function RootLayout({
                   </span>
                 </div>
               </Link>
-              <Link
-                href="/login"
-                className="rounded-full border border-emerald-400 px-4 py-1.5 text-sm font-medium text-emerald-50 shadow-sm transition hover:bg-emerald-500/10 hover:border-emerald-300"
-              >
-                Connexion
-              </Link>
+              <HeaderAuthButton />
             </div>
           </header>
           <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>

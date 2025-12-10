@@ -1,3 +1,9 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { getCurrentUser } from "../../lib/auth";
+
 const HEART_RATE_HIGH = 95;
 const RESPIRATION_HIGH = 20;
 const SLEEP_SCORE_LOW = 60;
@@ -7,6 +13,15 @@ const RESPIRATION = 21;
 const SLEEP_SCORE = 62;
 
 export default function PatientPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = getCurrentUser();
+    if (!user) {
+      router.replace("/login");
+    }
+  }, [router]);
+
   const isBpmHigh = HEART_RATE >= HEART_RATE_HIGH;
   const isRespHigh = RESPIRATION >= RESPIRATION_HIGH;
   const isSleepLow = SLEEP_SCORE <= SLEEP_SCORE_LOW;
@@ -33,7 +48,9 @@ export default function PatientPage() {
             Fréquence cardiaque moyenne
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${isBpmHigh ? "text-red-400" : "text-slate-50"}`}
+            className={`mt-3 text-3xl font-semibold ${
+              isBpmHigh ? "text-red-400" : "text-slate-50"
+            }`}
           >
             {HEART_RATE} bpm
           </p>
@@ -47,7 +64,9 @@ export default function PatientPage() {
             Fréquence respiratoire
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${isRespHigh ? "text-red-400" : "text-slate-50"}`}
+            className={`mt-3 text-3xl font-semibold ${
+              isRespHigh ? "text-red-400" : "text-slate-50"
+            }`}
           >
             {RESPIRATION} / min
           </p>
@@ -61,7 +80,9 @@ export default function PatientPage() {
             Qualité du sommeil (score)
           </h2>
           <p
-            className={`mt-3 text-3xl font-semibold ${isSleepLow ? "text-red-400" : "text-slate-50"}`}
+            className={`mt-3 text-3xl font-semibold ${
+              isSleepLow ? "text-red-400" : "text-slate-50"
+            }`}
           >
             {SLEEP_SCORE} / 100
           </p>

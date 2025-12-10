@@ -2,8 +2,8 @@
 
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
-
-/* eslint-disable react-hooks/set-state-in-effect */
+import { useRouter } from "next/navigation";
+import { getCurrentUser } from "../../lib/auth";
 
 const MOCK_DATA = {
   "124578": {
@@ -68,6 +68,15 @@ function getCardioSpeed(bpm: number): number {
 }
 
 export default function ProPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = getCurrentUser();
+    if (!user) {
+      router.replace("/login");
+    }
+  }, [router]);
+
   const [braceletId, setBraceletId] = useState<BandId | "">("124578");
   const [activeId, setActiveId] = useState<BandId | null>("124578");
   const [view, setView] = useState<"summary" | "realtime">("summary");
@@ -83,6 +92,7 @@ export default function ProPage() {
 
   useEffect(() => {
     if (!data) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setRealtime(null);
       return;
     }
@@ -410,7 +420,6 @@ export default function ProPage() {
                         <div className="mt-3 flex h-20 items-end justify-between gap-1">
                           {Array.from({ length: 16 }).map((_, index) => (
                             <div
-                              // eslint-disable-next-line react/no-array-index-key
                               key={index}
                               className="bar-pulse w-full rounded-t-full bg-gradient-to-t from-sky-500/60 via-sky-300/70 to-sky-200/90"
                               style={{
